@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrega de Actividad - Tarea 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f8; color: #2c3e50; min-height: 100vh; display: flex; flex-direction: column; }
+        
+        /* Header Institucional */
+        header { background-color: #006830; color: white; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header-logo { display: flex; align-items: center; gap: 12px; }
+        .header-logo img { width: 35px; height: 35px; }
+
+        .main-wrapper { flex: 1; padding: 30px 20px; }
+        .container { max-width: 750px; margin: 0 auto; background: white; padding: 35px; border-radius: 8px; border: 1px solid #e9ecef; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        
+        .task-title { color: #006830; font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; border-bottom: 2px solid #95BF0C; padding-bottom: 10px; }
+        
+        .info-card { background: #f8f9fa; border-left: 4px solid #006830; padding: 16px; margin-bottom: 25px; border-radius: 4px; font-size: 0.88rem; line-height: 1.5; }
+        .info-card p { margin-bottom: 6px; }
+        .info-card p:last-child { margin-bottom: 0; }
+        
+        .form-group { margin-bottom: 22px; }
+        label { display: block; font-weight: 600; font-size: 0.88rem; color: #343a40; margin-bottom: 8px; }
+        textarea { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; font-family: inherit; font-size: 0.9rem; resize: vertical; transition: border-color 0.2s; }
+        textarea:focus { border-color: #006830; outline: none; }
+        
+        .file-dropzone { border: 2px dashed #95BF0C; background: #fdfdfe; padding: 25px; text-align: center; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+        .file-dropzone:hover { background: #f4f9f5; }
+        .file-dropzone i { font-size: 2rem; color: #006830; margin-bottom: 8px; }
+        .file-dropzone input[type="file"] { display: none; }
+        .file-name-display { margin-top: 8px; font-size: 0.85rem; color: #006830; font-weight: 600; }
+
+        .btn-container { display: flex; align-items: center; gap: 15px; margin-top: 25px; }
+        .btn-submit { background: #006830; color: white; border: none; padding: 11px 22px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: background 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-submit:hover { background: #004d23; }
+        .btn-cancel { text-decoration: none; color: #6c757d; font-size: 0.9rem; font-weight: 500; }
+        .btn-cancel:hover { color: #343a40; }
+
+        .status-box { display: none; margin-top: 20px; padding: 16px; background: #d1e7dd; color: #0f5132; border-radius: 6px; font-size: 0.9rem; text-align: center; }
+
+        footer { background-color: #212529; color: #ced4da; text-align: center; padding: 15px; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-logo">
+            <img src="Adobe Express - file.png" alt="Logo Colegio">
+            <h3 style="font-size: 1rem; font-weight: 600;">Plataforma Virtual de Aprendizaje</h3>
+        </div>
+        <a href="dashboard.html" style="color: white; text-decoration: none; font-size: 0.85rem;"><i class="fa-solid fa-arrow-left"></i> Volver al Curso</a>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="task-title">
+                <i class="fa-solid fa-file-arrow-up"></i> Tarea 1: Redacción de Correo Profesional
+            </div>
+            
+            <div class="info-card">
+                <p><b>Instrucciones de entrega:</b></p>
+                <p>Redacte un correo electrónico formal en inglés solicitando información sobre una beca de estudios. Adjunte su documento final en formato PDF, Word (.docx) o ZIP.</p>
+                <p style="color: #dc3545; font-weight: 600; margin-top: 8px;"><i class="fa-regular fa-clock"></i> Fecha límite de entrega: Domingo, 11:59 PM</p>
+            </div>
+
+            <form id="form-entrega" onsubmit="procesarEntrega(event)">
+                <div class="form-group">
+                    <label>Adjuntar documento del trabajo:</label>
+                    <div class="file-dropzone" onclick="document.getElementById('archivo-tarea').click()">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p style="font-size: 0.9rem; font-weight: 600; color: #495057;">Haz clic aquí para seleccionar tu archivo</p>
+                        <p style="font-size: 0.78rem; color: #6c757d;">Archivos permitidos: .pdf, .docx, .doc, .zip (Máx. 10MB)</p>
+                        <div id="file-name" class="file-name-display"></div>
+                    </div>
+                    <input type="file" id="archivo-tarea" required onchange="mostrarNombreArchivo(this)">
+                </div>
+
+                <div class="form-group">
+                    <label for="comentarios">Comentarios para el docente (Opcional):</label>
+                    <textarea id="comentarios" rows="3" placeholder="Escriba aquí alguna observación o aclaración sobre su entrega..."></textarea>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Guardar y Enviar Entrega</button>
+                    <a href="dashboard.html" class="btn-cancel">Cancelar</a>
+                </div>
+            </form>
+
+            <div id="status-box" class="status-box">
+                <i class="fa-solid fa-circle-check" style="font-size: 1.2rem;"></i> <b>¡Archivo guardado con éxito!</b> Redirigiendo al aula virtual...
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 English Language School - Entorno Virtual de Aprendizaje</p>
+    </footer>
+
+    <script>
+        function mostrarNombreArchivo(input) {
+            let fileName = input.files[0] ? input.files[0].name : '';
+            document.getElementById("file-name").innerText = fileName ? "Archivo seleccionado: " + fileName : '';
+        }
+
+        function procesarEntrega(e) {
+            e.preventDefault();
+            let archivo = document.getElementById("archivo-tarea").files[0];
+            if(!archivo) return;
+
+            localStorage.setItem("tarea1_entregada", "true");
+            localStorage.setItem("tarea1_nombre_archivo", archivo.name);
+
+            document.getElementById("form-entrega").style.display = "none";
+            document.getElementById("status-box").style.display = "block";
+
+            setTimeout(function() {
+                window.location.href = "dashboard.html";
+            }, 1400);
+        }
+    </script>
+</body>
+</html>

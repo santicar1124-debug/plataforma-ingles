@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Personal - Plataforma Virtual</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f8; color: #2c3e50; min-height: 100vh; display: flex; flex-direction: column; }
+
+        /* Header Institucional */
+        header { background-color: #006830; color: white; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header-logo { display: flex; align-items: center; gap: 12px; }
+        .header-logo img { width: 35px; height: 35px; object-fit: contain; }
+        .header-user { display: flex; align-items: center; gap: 20px; font-size: 0.9rem; }
+        .header-user a { color: #e9ecef; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+        .header-user a:hover { color: #ffffff; text-decoration: underline; }
+
+        /* Contenedor Principal */
+        .main-container { max-width: 1100px; margin: 30px auto; padding: 0 20px; flex: 1; width: 100%; }
+
+        /* Tarjeta de Bienvenida */
+        .welcome-card { background: linear-gradient(135deg, #006830, #004d23); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .welcome-text h1 { font-size: 1.6rem; margin-bottom: 8px; font-weight: 700; }
+        .welcome-text p { font-size: 0.95rem; opacity: 0.9; }
+        .user-badge { background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; backdrop-filter: blur(5px); white-space: nowrap; }
+
+        /* Sección de Cursos */
+        .section-title { font-size: 1.2rem; color: #006830; margin-bottom: 20px; border-bottom: 2px solid #e9ecef; padding-bottom: 8px; font-weight: 700; }
+        .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-bottom: 30px; }
+
+        .course-card { background: white; border-radius: 8px; border: 1px solid #e9ecef; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s, box-shadow 0.2s; }
+        .course-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.08); }
+        .course-header { background: #1a365d; color: white; padding: 20px; text-align: center; position: relative; }
+        .course-header i { font-size: 2.5rem; margin-bottom: 10px; opacity: 0.9; }
+        .course-body { padding: 20px; }
+        .course-title { font-size: 1.05rem; font-weight: 700; color: #212529; margin-bottom: 8px; }
+        .course-desc { font-size: 0.85rem; color: #6c757d; margin-bottom: 15px; line-height: 1.4; }
+
+        /* Barra de Progreso */
+        .progress-container { margin-bottom: 18px; }
+        .progress-label { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; color: #495057; margin-bottom: 5px; }
+        .progress-bar-bg { background: #e9ecef; border-radius: 10px; height: 8px; overflow: hidden; }
+        .progress-bar-fill { background: #006830; height: 100%; border-radius: 10px; transition: width 0.4s ease; }
+
+        .btn-access { display: block; text-align: center; background: #006830; color: white; text-decoration: none; padding: 10px; border-radius: 6px; font-weight: 600; font-size: 0.88rem; transition: background 0.2s; }
+        .btn-access:hover { background: #004d23; }
+
+        footer { background-color: #212529; color: #ced4da; text-align: center; padding: 18px; font-size: 0.85rem; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+    <!-- Header Principal -->
+    <header>
+        <div class="header-logo">
+            <img src="Adobe Express - file.png" alt="Logo Colegio">
+            <h3 style="font-size: 1rem; font-weight: 600;">Plataforma Virtual</h3>
+        </div>
+        <div class="header-user">
+            <span><i class="fa-solid fa-circle-user"></i> <span id="nombre-header">Estudiante</span></span>
+            <a href="login.html" onclick="localStorage.removeItem('usuario_activo')"><i class="fa-solid fa-right-from-bracket"></i> Salir</a>
+        </div>
+    </header>
+
+    <!-- Contenido del Área Personal -->
+    <div class="main-container">
+
+        <!-- Banner de Bienvenida -->
+        <div class="welcome-card">
+            <div class="welcome-text">
+                <h1 id="saludo-usuario">¡Hola de nuevo! 👋</h1>
+                <p>Bienvenido a tu panel principal. Selecciona tu asignatura para acceder al aula virtual.</p>
+            </div>
+            <div class="user-badge">
+                <i class="fa-solid fa-graduation-cap"></i> <span id="badge-grado">Grado Décimo</span>
+            </div>
+        </div>
+
+        <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Mis Cursos Inscritos</h2>
+
+        <!-- Rejilla de Cursos -->
+        <div class="courses-grid">
+
+            <!-- Curso 1: Inglés (Principal) -->
+            <div class="course-card">
+                <div class="course-header">
+                    <i class="fa-solid fa-language"></i>
+                    <h3>English Language B1</h3>
+                </div>
+                <div class="course-body">
+                    <h4 class="course-title">Inglés B1 - Entorno Virtual</h4>
+                    <p class="course-desc">Módulos interactivos, guías de aprendizaje, videos explicativos y evaluaciones en línea.</p>
+
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Progreso del Curso</span>
+                            <span id="progreso-texto">50%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="progreso-barra" style="width: 50%;"></div>
+                        </div>
+                    </div>
+
+                    <a href="dashboard.html" class="btn-access">Ingresar al Curso <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Curso 2: Software (Secundario para contexto) -->
+            <div class="course-card" style="opacity: 0.85;">
+                <div class="course-header" style="background: #2b6cb0;">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Software Dev</h3>
+                </div>
+                <div class="course-body">
+                    <h4 class="course-title">Énfasis: Desarrollo de Software</h4>
+                    <p class="course-desc">Fundamentos de lógica de programación y desarrollo web en el entorno escolar.</p>
+
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Progreso del Curso</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 80%; background: #2b6cb0;"></div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn-access" style="background: #2b6cb0;" onclick="alert('Este curso es de muestra. Haz clic en Inglés B1 para ver el prototipo completo.'); return false;">Ver Contenido</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 English Language School - Entorno Virtual de Aprendizaje</p>
+    </footer>
+
+    <!-- Script para Sincronizar el Usuario que inició sesión -->
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            // Cargar datos del usuario desde localStorage
+            let usuarioGuardado = localStorage.getItem("usuario_activo");
+
+            if (usuarioGuardado) {
+                let datos = JSON.parse(usuarioGuardado);
+
+                // 1. Nombre en el header superior
+                let elemHeader = document.getElementById("nombre-header");
+                if (elemHeader) elemHeader.innerText = datos.nombre;
+
+                // 2. Saludo en el banner verde
+                let elemSaludo = document.getElementById("saludo-usuario");
+                if (elemSaludo) elemSaludo.innerText = "¡Hola de nuevo, " + datos.nombre + "! 👋";
+
+                // 3. Etiqueta de Grado / Énfasis
+                let elemBadge = document.getElementById("badge-grado");
+                if (elemBadge) elemBadge.innerText = datos.grado + " - " + datos.enfasis;
+            }
+
+            // Actualizar la barra de progreso si la Tarea 1 ya fue entregada
+            if (localStorage.getItem("tarea1_entregada") === "true") {
+                let txtProgreso = document.getElementById("progreso-texto");
+                let barProgreso = document.getElementById("progreso-barra");
+                if (txtProgreso) txtProgreso.innerText = "70%";
+                if (barProgreso) barProgreso.style.width = "70%";
+            }
+        });
+    </script>
+</body>
+</html>

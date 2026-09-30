@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced English (C1) | English Language School</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #334155; line-height: 1.6; }
+        header { background-color: #006830; color: white; padding: 15px 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        .header-content { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-colegio { width: 48px; height: 48px; object-fit: contain; }
+        .logo-area h2 { font-size: 1.3rem; color: white; }
+        .volver { color: white; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: color 0.3s; }
+        .volver:hover { color: #95BF0C; }
+
+        .hero-curso { background: linear-gradient(135deg, #006830 0%, #004d24 100%); color: white; padding: 40px 20px; border-bottom: 5px solid #95BF0C; }
+        .hero-container { max-width: 1200px; margin: 0 auto; }
+        .badge-nivel { display: inline-block; background-color: #95BF0C; color: #006830; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; margin-bottom: 12px; }
+        .hero-curso h1 { font-size: 2.3rem; margin-bottom: 12px; }
+        .hero-curso p { font-size: 1.1rem; max-width: 800px; opacity: 0.95; }
+
+        .main-layout { max-width: 1200px; margin: 35px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .card-section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 25px; border: 1px solid #e2e8f0; }
+        .card-section h2 { color: #006830; font-size: 1.4rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+
+        .learning-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+        .learning-list li { display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 15px; border-radius: 8px; font-size: 0.95rem; }
+        .learning-list i { color: #006830; }
+
+        .summary-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-top: 5px solid #006830; position: sticky; top: 20px; }
+        .summary-card h3 { color: #006830; margin-bottom: 20px; font-size: 1.2rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+        .info-item { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .info-item i { width: 35px; height: 35px; background: #e8f3df; color: #006830; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .info-item div strong { display: block; font-size: 0.85rem; color: #64748b; }
+
+        .formulario-section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .campo { margin-bottom: 18px; }
+        .campo label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; }
+        .campo input, .campo textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit; }
+        .btn-submit { width: 100%; background-color: #006830; color: white; border: none; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { background-color: #95BF0C; color: #006830; }
+        #mensaje-exito { display: none; background-color: #e8f3df; color: #006830; padding: 15px; border-radius: 8px; margin-top: 15px; font-weight: 600; text-align: center; }
+
+        footer { background-color: #006830; color: white; text-align: center; padding: 25px; margin-top: 50px; font-size: 0.9rem; }
+        @media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <img src="Adobe Express - file.png" alt="Logo Colegio" class="logo-colegio">
+                <h2>English Language School</h2>
+            </div>
+            <a href="index.html" class="volver"><i class="fa-solid fa-arrow-left"></i> Volver al inicio</a>
+        </div>
+    </header>
+
+    <section class="hero-curso">
+        <div class="hero-container">
+            <span class="badge-nivel">Nivel C1</span>
+            <h1>Advanced English</h1>
+            <p>Perfecciona tu fluidez, espontaneidad y dominio preciso del idioma inglés para desenvolverte con solvencia en entornos especializados y de alto nivel.</p>
+        </div>
+    </section>
+
+    <main class="main-layout">
+        <div>
+            <section class="card-section">
+                <h2><i class="fa-solid fa-award"></i> ¿Qué aprenderás en este curso?</h2>
+                <ul class="learning-list">
+                    <li><i class="fa-solid fa-check-circle"></i> Expresarte con total fluidez de manera natural y espontánea.</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Dominar estructuras complejas y modismos del idioma.</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Redactar textos académicos y técnicos de alta calidad.</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Comprender discursos extensos y textos literarios sin esfuerzo.</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Negociar y argumentar estratégicamente en inglés.</li>
+                </ul>
+            </section>
+
+            <section class="card-section">
+                <h2><i class="fa-solid fa-chalkboard-user"></i> Metodología y Enfoque</h2>
+                <p>Metodología avanzada basada en seminarios, debates de temas de actualidad, producción textual compleja y perfeccionamiento fonético.</p>
+                
+                <h2 style="margin-top: 25px;"><i class="fa-solid fa-users"></i> ¿A quién está dirigido?</h2>
+                <p>Dirigido a estudiantes con dominio B2 consolidado que buscan el dominio pleno del idioma inglés a nivel profesional e internacional.</p>
+            </section>
+
+             <!-- Formulario Integrado -->
+            <section class="formulario-section">
+                <h2><i class="fa-solid fa-paper-plane"></i> Solicitud de Inscripción e Información</h2>
+                <p style="margin-bottom: 20px; color: #64748b;">Déjanos tus datos y nos pondremos en contacto contigo para completar tu registro.</p>
+
+                <form onsubmit="enviarFormulario(event)">
+                    <div class="campo">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" placeholder="ejemplo@correo.com" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="telefono">Teléfono / WhatsApp</label>
+                        <input type="tel" id="telefono" placeholder="300 000 0000" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="mensaje">Comentario o pregunta (Opcional)</label>
+                        <textarea id="mensaje" placeholder="¿Tienes alguna duda sobre la jornada u horarios?"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Solicitud
+                    </button>
+                </form>
+
+                <div id="mensaje-exito">
+                    <i class="fa-solid fa-circle-check"></i> ¡Solicitud enviada con éxito! Te contactaremos pronto.
+                </div>
+            </section>
+        </div>
+
+        <aside>
+            <div class="summary-card">
+                <h3>Detalles del Programa</h3>
+                <div class="info-item"><i class="fa-regular fa-clock"></i><div><strong>DURACIÓN</strong><span>28 Semanas</span></div></div>
+                <div class="info-item"><i class="fa-solid fa-location-dot"></i><div><strong>MODALIDAD</strong><span>Presencial</span></div></div>
+                <div class="info-item"><i class="fa-solid fa-sun"></i><div><strong>JORNADA</strong><span>Tarde (Sede Principal)</span></div></div>
+                <div class="info-item"><i class="fa-solid fa-layer-group"></i><div><strong>NIVEL DE SALIDA</strong><span>C1 (Marco Común Europeo)</span></div></div>
+            </div>
+        </aside>
+    </main>
+
+    <footer><p>© 2026 English Language School - Proyecto Escolar de Desarrollo de Software</p></footer>
+
+    <script>
+        function enviarFormulario(event) {
+            event.preventDefault();
+            document.getElementById("mensaje-exito").style.display = "block";
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

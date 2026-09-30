@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Guía Gramatical Semana 1 - PDF Viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #525659; margin: 0; padding: 20px; }
+        .pdf-toolbar { max-width: 800px; margin: 0 auto 10px auto; background: #323639; color: white; padding: 10px 20px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
+        .pdf-page { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 2px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); min-height: 900px; font-size: 0.95rem; line-height: 1.6; }
+        .doc-header { border-bottom: 2px solid #006830; padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
+        .doc-header h2 { color: #006830; font-size: 1.3rem; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #dee2e6; padding: 10px; text-align: left; }
+        th { background: #e9f5ec; color: #006830; }
+        .btn-back { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<div class="pdf-toolbar">
+    <span><i class="fa-solid fa-file-pdf"></i> Guia_Gramatical_Semana1.pdf</span>
+    <div>
+        <button onclick="window.print()" style="background: #006830; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; margin-right: 10px;"><i class="fa-solid fa-print"></i> Imprimir / Descargar PDF</button>
+        <a href="dashboard.html" class="btn-back">← Volver al curso</a>
+    </div>
+</div>
+
+<div class="pdf-page">
+    <div class="doc-header">
+        <div>
+            <h2>English Language School</h2>
+            <small>Semillero de Inglés B1 - Material de Estudio</small>
+        </div>
+        <div style="text-align: right; font-size: 0.85rem; color: #6c757d;">
+            <b>Módulo:</b> Grammar Unit 1<br>
+            <b>Versión:</b> 2026.1
+        </div>
+    </div>
+
+    <h3>Present Perfect vs Simple Past</h3>
+    <p style="margin-top: 10px;">El uso adecuado de los tiempos verbales es fundamental en la redacción de correos institucionales y laborales.</p>
+
+    <table>
+        <tr>
+            <th>Criterio</th>
+            <th>Present Perfect</th>
+            <th>Simple Past</th>
+        </tr>
+        <tr>
+            <td><b>Uso</b></td>
+            <td>Acciones no terminadas o sin tiempo específico.</td>
+            <td>Acciones completadas en un tiempo definido.</td>
+        </tr>
+        <tr>
+            <td><b>Palabras Clave</b></td>
+            <td>Already, yet, ever, never, since, for.</td>
+            <td>Yesterday, last week, in 2024, ago.</td>
+        </tr>
+        <tr>
+            <td><b>Ejemplo</b></td>
+            <td><i>I have sent the report.</i></td>
+            <td><i>I sent the report yesterday at 4 PM.</i></td>
+        </tr>
+    </table>
+
+    <h4 style="margin-top: 25px; color: #006830;">Estructura Formal para Correos:</h4>
+    <p>1. <b>Greeting:</b> Dear Mr./Ms. [Last Name]</p>
+    <p>2. <b>Opening:</b> <i>I am writing to inquire about...</i> or <i>I have received your email...</i></p>
+    <p>3. <b>Closing:</b> Sincerely / Best regards.</p>
+</div>
+
+</body>
+</html>

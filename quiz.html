@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario 1 - Evaluación Corta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f8; color: #2c3e50; min-height: 100vh; display: flex; flex-direction: column; }
+        
+        /* Header Institucional */
+        header { background-color: #006830; color: white; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header-logo { display: flex; align-items: center; gap: 12px; }
+        .header-logo img { width: 35px; height: 35px; }
+
+        .main-wrapper { flex: 1; padding: 30px 20px; }
+        .quiz-container { max-width: 700px; margin: 0 auto; background: white; padding: 35px; border-radius: 8px; border: 1px solid #e9ecef; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        
+        .quiz-title { color: #006830; font-size: 1.3rem; font-weight: 700; border-bottom: 2px solid #95BF0C; padding-bottom: 10px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .quiz-header { padding-bottom: 12px; margin-bottom: 25px; font-size: 0.85rem; color: #6c757d; display: flex; justify-content: space-between; border-bottom: 1px solid #f1f3f5; }
+        
+        .pregunta-card { background: #ffffff; border: 1px solid #dee2e6; padding: 22px; border-radius: 6px; margin-bottom: 20px; }
+        .pregunta-titulo { font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #006830; text-transform: uppercase; letter-spacing: 0.5px; }
+        .pregunta-texto { font-size: 0.92rem; margin-bottom: 15px; font-weight: 500; }
+        .quote-box { font-style: italic; margin-bottom: 20px; background: #f8f9fa; padding: 12px 15px; border-left: 3px solid #006830; border-radius: 3px; font-size: 0.9rem; }
+        
+        .opcion-btn { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: white; border: 1px solid #ced4da; padding: 12px 18px; margin-bottom: 10px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; font-family: inherit; }
+        .opcion-btn:hover { background: #e9f5ec; border-color: #006830; color: #006830; font-weight: 600; }
+
+        .result-box { display: none; text-align: center; padding: 25px 10px; }
+        .result-score { font-size: 2.5rem; color: #006830; font-weight: 800; margin: 15px 0; }
+        .btn-volver { display: inline-flex; align-items: center; gap: 8px; background: #006830; color: white; text-decoration: none; padding: 11px 22px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; margin-top: 15px; transition: background 0.2s; }
+        .btn-volver:hover { background: #004d23; }
+
+        footer { background-color: #212529; color: #ced4da; text-align: center; padding: 15px; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-logo">
+            <img src="Adobe Express - file.png" alt="Logo Colegio">
+            <h3 style="font-size: 1rem; font-weight: 600;">Plataforma Virtual de Aprendizaje</h3>
+        </div>
+        <a href="dashboard.html" style="color: white; text-decoration: none; font-size: 0.85rem;"><i class="fa-solid fa-arrow-left"></i> Cancelar Cuestionario</a>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="quiz-container">
+            <div class="quiz-title">
+                <i class="fa-solid fa-pen-to-square"></i> Cuestionario 1: Gramática y Tiempos Verbales
+            </div>
+            
+            <div class="quiz-header">
+                <span><i class="fa-regular fa-clock"></i> <b>Límite de tiempo:</b> Sin límite</span>
+                <span><i class="fa-solid fa-rotate-left"></i> <b>Intentos permitidos:</b> 1</span>
+            </div>
+
+            <!-- PREGUNTA 1 -->
+            <div id="pregunta-1" class="pregunta-card">
+                <div class="pregunta-titulo">Pregunta 1 de 2</div>
+                <div class="pregunta-texto">Seleccione la opción correcta para completar la oración de correo formal:</div>
+                <div class="quote-box">
+                    "Dear Manager, I __________ (send) the requested documents yesterday afternoon."
+                </div>
+                <div>
+                    <button class="opcion-btn" onclick="responder(1, false)"><i class="fa-regular fa-circle"></i> A) have sent</button>
+                    <button class="opcion-btn" onclick="responder(1, true)"><i class="fa-regular fa-circle"></i> B) sent</button>
+                    <button class="opcion-btn" onclick="responder(1, false)"><i class="fa-regular fa-circle"></i> C) send</button>
+                </div>
+            </div>
+
+            <!-- PREGUNTA 2 -->
+            <div id="pregunta-2" class="pregunta-card" style="display: none;">
+                <div class="pregunta-titulo">Pregunta 2 de 2</div>
+                <div class="pregunta-texto">Seleccione la opción que corresponde al uso correcto de Present Perfect:</div>
+                <div class="quote-box">
+                    "We __________ (work) with this client since 2022."
+                </div>
+                <div>
+                    <button class="opcion-btn" onclick="responder(2, true)"><i class="fa-regular fa-circle"></i> A) have worked</button>
+                    <button class="opcion-btn" onclick="responder(2, false)"><i class="fa-regular fa-circle"></i> B) worked</button>
+                    <button class="opcion-btn" onclick="responder(2, false)"><i class="fa-regular fa-circle"></i> C) were working</button>
+                </div>
+            </div>
+
+            <!-- RESULTADOS -->
+            <div id="pantalla-resultado" class="result-box">
+                <i class="fa-solid fa-circle-check" style="font-size: 3.5rem; color: #006830;"></i>
+                <h2 style="margin-top: 15px; color: #2c3e50;">¡Cuestionario Finalizado!</h2>
+                <p style="color: #6c757d; margin-top: 5px; font-size: 0.9rem;">Su calificación ha sido almacenada correctamente en su historial académico.</p>
+                
+                <div class="result-score" id="nota-final">0.0 / 5.0</div>
+
+                <a href="dashboard.html" class="btn-volver"><i class="fa-solid fa-house"></i> Volver al Aula Virtual</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 English Language School - Entorno Virtual de Aprendizaje</p>
+    </footer>
+
+    <script>
+        let puntajeTotal = 0;
+
+        function responder(numeroPregunta, esCorrecta) {
+            if (esCorrecta) {
+                puntajeTotal += 2.5;
+            }
+
+            if (numeroPregunta === 1) {
+                document.getElementById("pregunta-1").style.display = "none";
+                document.getElementById("pregunta-2").style.display = "block";
+            } else if (numeroPregunta === 2) {
+                document.getElementById("pregunta-2").style.display = "none";
+                document.getElementById("pantalla-resultado").style.display = "block";
+
+                let notaFormateada = puntajeTotal.toFixed(1);
+                document.getElementById("nota-final").innerText = notaFormateada + " / 5.0";
+
+                localStorage.setItem("quiz1_nota", notaFormateada);
+            }
+        }
+    </script>
+</body>
+</html>

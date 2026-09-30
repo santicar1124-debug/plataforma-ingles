@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Virtual - Curso de Inglés B1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #006830;
+            color: white;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-colegio {
+            width: 40px;
+            height: 40px;
+        }
+
+        .header-user a {
+            color: #d1e7dd;
+            text-decoration: none;
+            margin-left: 12px;
+            font-size: 0.9rem;
+        }
+
+        .header-user a:hover {
+            color: white;
+        }
+
+        /* LAYOUT DE 3 COLUMNAS (Moodle Style) */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 220px 1fr 280px;
+            max-width: 1400px;
+            margin: 25px auto;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        /* BLOQUES LATERALES */
+        .sidebar-block {
+            background: white;
+            padding: 18px;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-block h4 {
+            color: #006830;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #95BF0C;
+            padding-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-block ul {
+            list-style: none;
+        }
+
+        .sidebar-block ul li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-block ul li a {
+            text-decoration: none;
+            color: #495057;
+            display: block;
+            padding: 6px 8px;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            transition: background 0.2s;
+        }
+
+        .sidebar-block ul li a:hover {
+            background-color: #e9f5ec;
+            color: #006830;
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        main {
+            min-width: 0;
+        }
+
+        .course-header {
+            background: white;
+            padding: 22px;
+            border-radius: 6px;
+            border-left: 5px solid #006830;
+            border-top: 1px solid #e9ecef;
+            border-right: 1px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 20px;
+        }
+
+        .course-header h1 {
+            color: #006830;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+        }
+
+        .teacher-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #f1f3f5;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .progress-box {
+            margin-top: 15px;
+        }
+
+        .progress-bar-bg {
+            background: #e9ecef;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+
+        .progress-bar-fill {
+            width: 40%;
+            height: 100%;
+            background: #006830;
+            transition: width 0.4s ease;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e9ecef;
+        }
+
+        .section-card h2 {
+            color: #006830;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #f1f3f5;
+        }
+
+        .resource-list {
+            list-style: none;
+        }
+
+        .resource-item {
+            padding: 10px 12px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fafafa;
+            border: 1px solid #f1f3f5;
+        }
+
+        .resource-item:hover {
+            background: #f1f3f5;
+        }
+
+        .resource-link {
+            text-decoration: none;
+            color: #006830;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .resource-desc {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 2px;
+            font-weight: normal;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-danger { background: #f8d7da; color: #842029; }
+        .badge-success { background: #d1e7dd; color: #0f5132; }
+        .badge-info { background: #cff4fc; color: #055160; }
+
+        /* WIDGETS DERECHA */
+        .timeline-item {
+            font-size: 0.83rem;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e9ecef;
+        }
+
+        .timeline-item:last-child { border-bottom: none; }
+
+        .timeline-date {
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 0.78rem;
+        }
+
+        footer {
+            background-color: #212529;
+            color: #ced4da;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 1100px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-logo">
+            <img src="Adobe Express - file.png" alt="Logo Colegio" class="logo-colegio">
+            <h3>Plataforma Virtual de Aprendizaje</h3>
+        </div>
+        <div class="header-user">
+            <span>Estudiante Décimo Grado</span>
+            <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Salir</a>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+
+        <!-- COLUMNA IZQUIERDA: Navegación -->
+        <aside>
+            <div class="sidebar-block">
+                <h4><i class="fa-solid fa-compass"></i> Navegación</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-gauge"></i> Área personal</a></li>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Inicio del sitio</a></li>
+                    <li><a href="#"><i class="fa-solid fa-graduation-cap"></i> Mis Cursos (B1)</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-block">
+                <h4><i class="fa-solid fa-sliders"></i> Administración</h4>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="alert('Calificación actual: 4.8 / 5.0')"><i class="fa-solid fa-chart-line"></i> Calificaciones</a></li>
+                    <li><a href="javascript:void(0)" onclick="alert('Perfil de usuario activo.')"><i class="fa-solid fa-user"></i> Mi Perfil</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- COLUMNA CENTRAL: Curso -->
+        <main>
+            <div class="course-header">
+                <h1>Semillero de Inglés: Nivel B1</h1>
+                <p style="font-size: 0.88rem; color: #6c757d;">Espacio académico exclusivo para el grupo de profundización en idioma extranjero.</p>
+                
+                <div class="teacher-info">
+                    <span><i class="fa-solid fa-user-tie"></i> <b>Docente:</b> Prof. English Dept.</span>
+                    <span><i class="fa-solid fa-clock"></i> <b>Tutorías:</b> Miércoles 2:00 PM</span>
+                </div>
+
+                <div class="progress-box">
+                    <small style="font-size: 0.85rem; font-weight: 600;">Progreso de actividades: <span id="text-progreso">40%</span></small>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="bar-progreso"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h2>General & Recursos Institucionales</h2>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <div>
+                            <a href="javascript:void(0)" onclick="alert('Aviso: Recuerden revisar el material antes de la sesión del viernes.')" class="resource-link">
+                                <i class="fa-solid fa-bullhorn"></i> Avisos y novedades del profesor
+                            </a>
+                            <div class="resource-desc">Anuncios oficiales y recordatorios de entrega</div>
+                        </div>
+                        <span class="badge badge-info">1 nuevo</span>
+                    </li>
+                    <li class="resource-item">
+                        <div>
+                            <a href="javascript:void(0)" onclick="alert('Foro académico abierto para consultas generales.')" class="resource-link">
+                                <i class="fa-solid fa-comments"></i> Foro de dudas generales
+                            </a>
+                            <div class="resource-desc">Espacio para resolver preguntas sobre guías y talleres</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section-card">
+                <h2>Semana 1: Tiempos Verbales y Redacción Formal</h2>
+                <p style="font-size: 0.85rem; color: #6c757d; margin-bottom: 12px;">Revisión práctica del Present Perfect y Simple Past aplicados a correspondencia laboral.</p>
+
+                <ul class="resource-list">
+                    <!-- Enlace al PDF -->
+<li class="resource-item">
+    <div>
+        <a href="guia_semana1.html" class="resource-link">
+            <i class="fa-solid fa-file-pdf" style="color: #dc3545;"></i> Guía Resumen: Tabla de Tiempos Verbales (PDF)
+        </a>
+        <div class="resource-desc">Material complementario de consulta rápida</div>
+    </div>
+    <span class="badge badge-info">PDF</span>
+</li>
+
+<!-- Enlace al Cuestionario -->
+<li class="resource-item">
+    <div>
+        <a href="quiz.html" class="resource-link">
+            <i class="fa-solid fa-pen-to-square"></i> Cuestionario 1: Autoevaluación Corta
+        </a>
+        <div class="resource-desc">2 preguntas de opción múltiple con calificación inmediata</div>
+    </div>
+    <span class="badge badge-danger" id="estado-quiz">Sin realizar</span>
+</li>
+
+<!-- Enlace a la Entrega de Tarea -->
+<li class="resource-item">
+    <div>
+        <a href="entrega_tarea1.html" class="resource-link">
+            <i class="fa-solid fa-file-arrow-up"></i> Tarea 1: Redacción de Correo Profesional
+        </a>
+        <div class="resource-desc">Subir archivo (PDF o Word) con la respuesta formal</div>
+    </div>
+    <span class="badge badge-danger" id="estado-tarea">No entregado</span>
+</li>
+                </ul>
+            </div>
+
+            <div class="section-card">
+    <h2>Semana 2: Vocabulario Institucional y Atención Telefónica</h2>
+    <p style="font-size: 0.85rem; color: #6c757d; margin-bottom: 12px;">Expresiones clave para llamadas laborales, protocolo de atención y pronunciación.</p>
+
+    <ul class="resource-list">
+        <li class="resource-item">
+            <div>
+                <a href="javascript:void(0)" onclick="alert('Abriendo archivo de audio de ejemplo...')" class="resource-link">
+                    <i class="fa-solid fa-headphones" style="color: #006830;"></i> Audio Guía: Pronunciación y Frases Clave
+                </a>
+                <div class="resource-desc">Duración: 5 min | Escucha y repite el vocabulario técnico</div>
+            </div>
+            <span class="badge badge-info">MP3</span>
+        </li>
+        <li class="resource-item">
+            <div>
+                <a href="guia_semana1.html" class="resource-link">
+                    <i class="fa-solid fa-file-pdf" style="color: #dc3545;"></i> Glosario de Términos Corporativos (PDF)
+                </a>
+                <div class="resource-desc">Lista de conectores y fórmulas de cortesía en inglés</div>
+            </div>
+            <span class="badge badge-info">PDF</span>
+        </li>
+        <li class="resource-item">
+            <div>
+                <a href="entrega_tarea2.html" class="resource-link">
+                    <i class="fa-solid fa-microphone"></i> Tarea 2: Grabación de Llamada Profesional
+                </a>
+                <div class="resource-desc">Subir archivo de audio (MP3, WAV) o video (MP4) simulando la atención a un cliente</div>
+            </div>
+            <span class="badge badge-danger" id="estado-tarea2">No entregado</span>
+        </li>
+    </ul>
+</div>
+        </main>
+
+        <!-- COLUMNA DERECHA: Widgets Moodle -->
+        <aside>
+            <div class="sidebar-block">
+                <h4><i class="fa-solid fa-clock"></i> Línea del Tiempo</h4>
+                <div class="timeline-item">
+                    <div class="timeline-date">Domingo, 11:59 PM</div>
+                    <div><b>Tarea 1: Redacción de Correo</b></div>
+                    <small style="color: #6c757d;">Requiere entrega de texto</small>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Próximo Miércoles</div>
+                    <div><b>Cuestionario 1</b></div>
+                    <small style="color: #6c757d;">Autoevaluación de gramática</small>
+                </div>
+            </div>
+
+            <div class="sidebar-block">
+                <h4><i class="fa-solid fa-calendar-days"></i> Eventos Próximos</h4>
+                <p style="font-size: 0.83rem; color: #495057;"><i class="fa-solid fa-users"></i> Sesión sincrónica de dudas el próximo viernes a las 10:00 AM.</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>© 2026 English Language School - Entorno Virtual de Aprendizaje (Moodle Style)</p>
+    </footer>
+
+    <script>
+        function entregarTarea() {
+            let respuesta = prompt("Escribe tu texto de entrega para la Tarea 1 (Redacción de correo):");
+            if (respuesta && respuesta.trim() !== "") {
+                document.getElementById("estado-tarea").className = "badge badge-success";
+                document.getElementById("estado-tarea").innerText = "Entregado";
+                
+                // Actualizar progreso
+                document.getElementById("text-progreso").innerText = "70%";
+                document.getElementById("bar-progreso").style.width = "70%";
+                alert("Tarea 1 registrada correctamente en el sistema.");
+            }
+        }
+    </script>
+    <script>
+    // Verificar si la tarea fue entregada mediante localStorage
+    window.onload = function() {
+        if(localStorage.getItem("tarea1_entregada") === "true") {
+            let badgeTarea = document.getElementById("estado-tarea");
+            let nombreArchivo = localStorage.getItem("tarea1_nombre_archivo") || "Archivo adjunto";
+            
+            badgeTarea.className = "badge badge-success";
+            badgeTarea.innerText = "Entregado (" + nombreArchivo + ")";
+
+         if(localStorage.getItem("tarea2_entregada") === "true") {
+    let badgeTarea2 = document.getElementById("estado-tarea2");
+    let nombreArchivo2 = localStorage.getItem("tarea2_nombre_archivo") || "Audio adjunto";
+    
+    badgeTarea2.className = "badge badge-success";
+    badgeTarea2.innerText = "Entregado (" + nombreArchivo2 + ")";
+}
+
+            // Actualizar progreso
+            document.getElementById("text-progreso").innerText = "70%";
+            document.getElementById("bar-progreso").style.width = "70%";
+        }
+
+        if(localStorage.getItem("quiz1_nota")) {
+            let badgeQuiz = document.getElementById("estado-quiz");
+            badgeQuiz.className = "badge badge-success";
+            badgeQuiz.innerText = "Nota: " + localStorage.getItem("quiz1_nota") + " / 5.0";
+        }
+    }
+</script>
+</body>
+</html>

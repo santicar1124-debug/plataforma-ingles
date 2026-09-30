@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Language School - Inicio</title>
+    
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* ===== ESTILOS GENERALES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* ===== ENCABEZADO ===== */
+        header {
+            background-color: #006830;
+            color: white;
+            padding: 15px 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-colegio {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-colegio:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-area h2 {
+            font-size: 1.4rem;
+            color: white;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #95BF0C;
+        }
+
+        /* ===== SECCIONES PRINCIPALES ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #006830;
+            margin: 30px 0 20px;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* ===== HERO / QUIÉNES SOMOS ===== */
+        .about-card {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 6px solid #006830;
+            margin-bottom: 40px;
+        }
+
+        .about-card p {
+            font-size: 1.1rem;
+            color: #475569;
+            text-align: justify;
+        }
+
+        /* ===== METODOLOGÍA ===== */
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .method-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid #95BF0C;
+            transition: transform 0.3s ease;
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .method-card i {
+            font-size: 2rem;
+            color: #006830;
+            margin-bottom: 15px;
+        }
+
+        .method-card h3 {
+            color: #006830;
+            margin-bottom: 10px;
+        }
+
+        /* ===== PROGRAMAS ===== */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border-color: #95BF0C;
+        }
+
+        .badge {
+            align-self: flex-start;
+            background-color: #95BF0C;
+            color: #006830;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .program-card h3 {
+            color: #006830;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .program-details {
+            margin: 15px 0;
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+
+        .program-details i {
+            color: #006830;
+            margin-right: 6px;
+        }
+
+        .program-btn {
+            display: block;
+            text-align: center;
+            background: #006830;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .program-btn:hover {
+            background: #95BF0C;
+            color: #006830;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #006830;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #95BF0C;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            margin-top: 8px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <a href="https://colegiocomfenalcoibague.edu.co/" target="_blank">
+                    <img src="Adobe Express - file.png" alt="Logo Colegio Comfenalco" class="logo-colegio">
+                </a>
+                <h2>English Language School</h2>
+            </div>
+            <nav>
+                <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+                <a href="login.html"><i class="fa-solid fa-right-to-bracket"></i> Acceder (Moodle)</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Quiénes Somos -->
+        <section>
+            <h2 class="section-title">Quiénes Somos</h2>
+            <div class="about-card">
+                <p>
+                    En <strong>English Language School</strong> nos especializamos en la formación de estudiantes y futuros profesionales que desean fortalecer sus competencias comunicativas en inglés. Nuestro compromiso es brindar una educación de calidad, enfocada en el desarrollo de habilidades prácticas para contextos académicos, laborales y personales a través de un acompañamiento constante.
+                </p>
+            </div>
+        </section>
+
+        <!-- Metodología -->
+        <section>
+            <h2 class="section-title">Nuestra Metodología</h2>
+            <div class="methodology-grid">
+                <div class="method-card">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <h3>Clases Presenciales</h3>
+                    <p>Sesiones desarrolladas en la jornada de la tarde para favorecer la participación activa y el aprendizaje interactivo.</p>
+                </div>
+
+                <div class="method-card">
+                    <i class="fa-solid fa-comments"></i>
+                    <h3>Aprendizaje Práctico</h3>
+                    <p>Uso del idioma mediante debates, ejercicios contextualizados, comprensión auditiva y lecturas de la vida real.</p>
+                </div>
+
+                <div class="method-card">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h3>Seguimiento Continuo</h3>
+                    <p>Evaluación formativa constante para garantizar que cada alumno avance de nivel con confianza y seguridad.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programas Destacados -->
+        <section>
+            <h2 class="section-title">Programas Destacados</h2>
+            <div class="programs-grid">
+
+                <!-- Curso A1 - A2 -->
+                <div class="program-card">
+                    <div>
+                        <span class="badge">Nivel A1 - A2</span>
+                        <h3>English Foundations</h3>
+                        <p>Diseñado para quienes inician su aprendizaje o desean afianzar las bases del idioma inglés.</p>
+                    </div>
+                    <div>
+                        <div class="program-details">
+                            <p><i class="fa-regular fa-clock"></i> <strong>Duración:</strong> 16 semanas</p>
+                            <p><i class="fa-solid fa-location-dot"></i> <strong>Modalidad:</strong> Presencial (Tarde)</p>
+                        </div>
+                        <a href="curso-a1-a2.html" class="program-btn">Más Información <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Curso B1 - B2 -->
+                <div class="program-card">
+                    <div>
+                        <span class="badge">Nivel B1 - B2</span>
+                        <h3>Professional English</h3>
+                        <p>Orientado a estudiantes con conocimientos previos que buscan fluidez laboral y académica.</p>
+                    </div>
+                    <div>
+                        <div class="program-details">
+                            <p><i class="fa-regular fa-clock"></i> <strong>Duración:</strong> 24 semanas</p>
+                            <p><i class="fa-solid fa-location-dot"></i> <strong>Modalidad:</strong> Presencial (Tarde)</p>
+                        </div>
+                        <a href="curso-b1-b2.html" class="program-btn">Más Información <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Curso C1 -->
+                <div class="program-card">
+                    <div>
+                        <span class="badge">Nivel C1</span>
+                        <h3>Advanced English</h3>
+                        <p>Perfecciona tu fluidez, precisión y dominio técnico del idioma para entornos exigentes.</p>
+                    </div>
+                    <div>
+                        <div class="program-details">
+                            <p><i class="fa-regular fa-clock"></i> <strong>Duración:</strong> 28 semanas</p>
+                            <p><i class="fa-solid fa-location-dot"></i> <strong>Modalidad:</strong> Presencial (Tarde)</p>
+                        </div>
+                        <a href="curso-c1.html" class="program-btn">Más Información <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Único -->
+    <footer>
+        <div>
+            <a href="#">Política de Privacidad</a> | 
+            <a href="#">Términos y Condiciones</a> | 
+            <a href="#">Contacto</a>
+        </div>
+        <p>© 2026 English Language School. Todos los derechos reservados.</p>
+        <p style="font-size:0.85rem; opacity:0.8;">Proyecto escolar de desarrollo de software - Colegio Comfenalco</p>
+    </footer>
+
+</body>
+</html>
